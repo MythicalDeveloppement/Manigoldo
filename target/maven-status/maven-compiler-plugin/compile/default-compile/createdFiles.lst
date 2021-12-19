@@ -1,0 +1,10 @@
+plus\antdev\modules\economy\Account.class
+plus\antdev\commands\Pay.class
+plus\antdev\listeners\ManigoldoPlayerListener.class
+plus\antdev\Manigoldo.class
+plus\antdev\events\PlayerPayEvent.class
+plus\antdev\commands\Balance.class
+plus\antdev\utils\FileUtils.class
+plus\antdev\listeners\ManigoldoListener.class
+plus\antdev\modules\market\Market.class
+plus\antdev\utils\JsonManager.class

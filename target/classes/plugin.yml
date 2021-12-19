@@ -1,0 +1,39 @@
+name: Manigoldo
+main: plus.antdev.Manigoldo
+version: 1.0
+author: AntDevPlus
+website: https://antdev.plus
+description: Economy-plugin using in Fantasy-Project
+
+commands:
+  pay:
+    description: Make a bank transfer
+    aliases:
+      - transfer
+      - virement
+    permission: manigoldo.pay
+    permission-message: You do not have permission!
+    usage: /<command> [player] [amount]
+  balance:
+    description: See your current balance
+    aliases:
+      - account
+      - compte
+    permission: manigoldo.balance
+    permission-message: You do not have permission!
+    usage: /<command>
+
+permissions:
+  manigoldo.balance:
+    description: Permission to see your current balance
+    default: not op
+  manigoldo.pay:
+    description: Permission to make a bank transfer
+    default: op
+  manigoldo.*:
+    description: Wildcard permission
+    default: op
+    children:
+      manigoldo.pay: true
+      manigoldo.balance: true
+
