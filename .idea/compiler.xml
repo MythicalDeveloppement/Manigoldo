@@ -9,5 +9,8 @@
         <module name="Manigoldo" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="Manigoldo" target="17" />
+    </bytecodeTargetLevel>
   </component>
 </project>

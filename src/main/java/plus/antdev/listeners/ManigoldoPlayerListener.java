@@ -10,7 +10,10 @@ import java.io.IOException;
 
 public class ManigoldoPlayerListener implements Listener {
 
+    private final Manigoldo plugin;
+
     public ManigoldoPlayerListener(Manigoldo manigoldo) {
+        this.plugin = manigoldo;
     }
 
     @EventHandler

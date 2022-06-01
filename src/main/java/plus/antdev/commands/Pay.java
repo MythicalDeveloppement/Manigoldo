@@ -10,15 +10,13 @@ import plus.antdev.Manigoldo;
 import plus.antdev.modules.economy.Account;
 
 import java.io.IOException;
-import java.util.Objects;
 
 public class Pay implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender commandSender, Command command, String cmd, String[] args) {
-        if(commandSender instanceof Player && args.length == 2){
-           Player debtor = (Player) commandSender;
-           Player creditor = Bukkit.getPlayer(args[0]);
-           float amount = 0f;
+        if(commandSender instanceof Player debtor && args.length == 2){
+            Player creditor = Bukkit.getPlayer(args[0]);
+           float amount;
            if(creditor == null){
                return false;
            }
