@@ -4,6 +4,7 @@ version: 1.0
 author: AntDevPlus
 website: https://antdev.plus
 description: Economy-plugin using in Fantasy-Project
+api-version: 1.18
 
 commands:
   pay:
@@ -22,6 +23,13 @@ commands:
     permission: manigoldo.balance
     permission-message: You do not have permission!
     usage: /<command>
+  market:
+    description: Create a market DEBUG
+    aliases:
+      - mk
+    permission: manigoldo.market
+    permission-message: You do not have permission!
+    usage: /<command> [marketName]
 
 permissions:
   manigoldo.balance:
@@ -36,4 +44,3 @@ permissions:
     children:
       manigoldo.pay: true
       manigoldo.balance: true
-

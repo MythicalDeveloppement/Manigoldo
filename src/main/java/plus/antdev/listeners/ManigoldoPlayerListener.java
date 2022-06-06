@@ -21,5 +21,4 @@ public class ManigoldoPlayerListener implements Listener {
         Player player = event.getPlayer();
         Manigoldo.displayBalance(player);
     }
-
 }

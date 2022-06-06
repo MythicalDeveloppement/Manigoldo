@@ -7,6 +7,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 import plus.antdev.commands.Balance;
+import plus.antdev.commands.MarketCmd;
 import plus.antdev.commands.Pay;
 import plus.antdev.listeners.ManigoldoListener;
 import plus.antdev.listeners.ManigoldoPlayerListener;
@@ -21,7 +22,9 @@ public class Manigoldo extends JavaPlugin {
     private static Manigoldo INSTANCE;
 
     // Directories
-    private File AccountDir;
+    private File accountDir;
+    private File marketDir;
+    private File marketItemsDir;
     //Listeners
     private final ManigoldoListener manigoldoListener = new ManigoldoListener(this);
     private final ManigoldoPlayerListener playerListener = new ManigoldoPlayerListener(this);
@@ -30,9 +33,10 @@ public class Manigoldo extends JavaPlugin {
     // PRIVATE ZONE //
     //////////////////
 
-    private void registerCommands(){
+    private void registerCommands() {
         Objects.requireNonNull(getCommand("pay")).setExecutor(new Pay());
         Objects.requireNonNull(getCommand("balance")).setExecutor(new Balance());
+        Objects.requireNonNull(getCommand("market")).setExecutor(new MarketCmd());
     }
 
     /////////////////
@@ -42,8 +46,11 @@ public class Manigoldo extends JavaPlugin {
     @Override
     public void onLoad() {
         INSTANCE = this;
-        this.AccountDir = new File(this.getDataFolder(), "/accounts");
+        this.accountDir = new File(this.getDataFolder(), "/accounts");
+        this.marketDir = new File(this.getDataFolder(), "/markets");
+        this.marketItemsDir = new File(this.getDataFolder(), "/items");
     }
+
     @Override
     public void onEnable() {
         // Register listeners
@@ -52,18 +59,27 @@ public class Manigoldo extends JavaPlugin {
         registerCommands();
     }
 
-    // Getters
+    // Getters //
     public static Manigoldo getInstance() {
         return INSTANCE;
     }
+
     public File getAccountDir() {
-        return AccountDir;
+        return accountDir;
     }
 
-    private void registerEvents(){
+    public File getMarketDir() {
+        return marketDir;
+    }
+
+    public File getMarketItemsDir() {
+        return marketItemsDir;
+    }
+
+    private void registerEvents() {
         final PluginManager pluginManager = getServer().getPluginManager();
-        pluginManager.registerEvents(manigoldoListener,this);
-        pluginManager.registerEvents(playerListener,this);
+        pluginManager.registerEvents(manigoldoListener, this);
+        pluginManager.registerEvents(playerListener, this);
     }
 
     public static void displayBalance(Player player) throws IOException {
@@ -71,7 +87,7 @@ public class Manigoldo extends JavaPlugin {
         final String msg = ChatColor.WHITE + "[" + ChatColor.GOLD + "⛁" + ChatColor.WHITE + "]: %f";
         player.spigot().sendMessage(ChatMessageType.ACTION_BAR,
                 TextComponent.fromLegacyText(
-                        String.format(msg,account.getBalance())
+                        String.format(msg, account.getBalance())
                 )
         );
     }

@@ -32,6 +32,7 @@ public class Pay implements CommandExecutor {
                 return false;
             }
             try {
+                // Main action //
                 pay(debtor, creditor, amount);
             } catch (IOException e) {
                 return false;
